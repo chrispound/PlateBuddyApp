@@ -3,4 +3,14 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="bar_45_pounds">45 Pound Bar</string>
+    <string name="bar_35_pounds">35 Pound Bar</string>
+    <string name="has_45_weights">Has 45 weights</string>
+    <string name="has_35_weights">Has 35 weights</string>
+    <string name="has_25_weights">Has 25 weights</string>
+    <string name="has_10_weights">Has 10 weights</string>
+    <string name="has_5_weights">Has 5 weights</string>
+    <string name="has_2_5_weights">Has 2.5 Weights</string>
+    <string name="weight_to_lift_hint">Weight To Lift</string>
+    <string name="btn_calculate">Calculate</string>
 </resources>

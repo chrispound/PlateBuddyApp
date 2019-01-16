@@ -1,9 +1,9 @@
-package com.android.platebuddy.platebuddyapp
+package com.android.platebuddy.platebuddyapp.main
 
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
-import com.android.platebuddy.platebuddyapp.R.id.message
+import com.android.platebuddy.platebuddyapp.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

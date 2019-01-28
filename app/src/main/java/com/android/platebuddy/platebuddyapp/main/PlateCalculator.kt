@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import com.android.platebuddy.platebuddyapp.R
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class PlateCalculator : AppCompatActivity() {
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {

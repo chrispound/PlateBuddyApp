@@ -6,7 +6,7 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".main.MainActivity">
+        tools:context=".main.PlateCalculator">
 
     <android.support.design.widget.BottomNavigationView
             android:id="@+id/navigation"
@@ -20,7 +20,7 @@
             app:layout_constraintRight_toRightOf="parent"/>
 
     <fragment
-            android:name="com.android.platebuddy.platebuddyapp.main.MainFragment"
+            android:name="com.android.platebuddy.platebuddyapp.main.ui.calculator.PlateCalculatorFragment"
             android:tag="fragment_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>

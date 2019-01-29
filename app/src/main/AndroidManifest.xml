@@ -12,7 +12,7 @@
         <activity android:name=".main.PlateManagement">
         </activity>
         <activity
-                android:name=".main.PlateCalculator"
+                android:name=".main.PlateBuddyMainActivity"
                 android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

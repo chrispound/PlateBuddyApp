@@ -11,9 +11,10 @@
     <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent" android:id="@+id/barWeightRadioGrp">
+            android:layout_marginEnd="16dp" android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp" android:id="@+id/barWeightRadioGrp"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.515">
         <RadioButton
                 android:text="@string/bar_45_pounds"
                 android:enabled="true"
@@ -26,76 +27,36 @@
                 android:layout_height="wrap_content" android:id="@+id/barWeight35RadioBtn" android:layout_weight="1"
                 android:padding="8dp"/>
     </RadioGroup>
-    <Switch
-            android:text="@string/has_45_weights"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/has45Weights"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="16dp" android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/barWeightRadioGrp" android:padding="4dp" android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/barWeightRadioGrp"/>
-
-    <Switch
-            android:text="@string/has_25_weights"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="4dp"
-            android:id="@+id/has25weights" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/has35weights"
-            app:layout_constraintStart_toStartOf="@+id/has45Weights"
-    />
-    <Switch
-            android:text="@string/has_10_weights"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:padding="4dp"
-            android:id="@+id/has10weights" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/has25weights"
-            app:layout_constraintStart_toStartOf="@+id/has45Weights"
-    />
-    <Switch
-            android:text="@string/has_35_weights"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/has35weights"
-            android:padding="4dp"
-            app:layout_constraintStart_toStartOf="@+id/has45Weights"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/has45Weights"/>
-    <Switch
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="4dp"
-            android:id="@+id/has5weights" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/has10weights"
-            app:layout_constraintStart_toStartOf="@+id/has45Weights"
-            android:text="@string/has_5_weights"
-            android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="@+id/has10weights"/>
-    <Switch
-            android:text="@string/has_2_5_weights"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:padding="4dp"
-            android:id="@+id/has2_5_wieghts" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/has5weights"
-            app:layout_constraintStart_toStartOf="@+id/has5weights"
-    />
+    <ScrollView android:layout_width="match_parent" android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                app:layout_constraintBottom_toTopOf="@+id/weightToLiftEditTxt"
+                app:layout_constraintTop_toBottomOf="@+id/barWeightRadioGrp"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent">
+        <LinearLayout android:orientation="vertical"
+                      android:id="@+id/ll_plate_display"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"/>
+    </ScrollView>
     <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:id="@+id/weightToLiftEditTxt"
-            app:layout_constraintStart_toStartOf="@+id/has45Weights" android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/barWeightRadioGrp" app:layout_constraintHorizontal_bias="0.503"
-            android:hint="@string/weight_to_lift_hint" android:layout_marginTop="24dp"
-            app:layout_constraintTop_toBottomOf="@+id/has2_5_wieghts" android:inputType="numberDecimal"/>
+            android:hint="@string/weight_to_lift_hint"
+            android:inputType="numberDecimal"
+            android:layout_marginBottom="32dp"
+            android:layout_marginEnd="16dp" android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toTopOf="@+id/btnCalculate"
+            app:layout_constraintEnd_toEndOf="parent"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btnCalculate" android:text="@string/btn_calculate"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/weightToLiftEditTxt"/>
+            android:layout_marginStart="8dp" android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+    />
 
 </android.support.constraint.ConstraintLayout>

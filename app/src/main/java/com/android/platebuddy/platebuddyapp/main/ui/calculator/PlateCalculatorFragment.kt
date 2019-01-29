@@ -5,9 +5,11 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.widget.TextViewCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import com.android.platebuddy.platebuddyapp.R
 import com.android.platebuddy.platebuddyapp.models.PlateResult
 import kotlinx.android.synthetic.main.fragment_plate_calculator.*
@@ -27,7 +29,6 @@ class PlateCalculatorFragment: Fragment() {
         viewModel = ViewModelProviders.of(this).get(PlateCalculatorViewModel::class.java)
         viewModel.getPlateResult().observe(this, Observer<PlateResult>{ plateResult ->
             displayResults(plateResult!!)
-            //todo update ui
         })
     }
 
@@ -46,11 +47,13 @@ class PlateCalculatorFragment: Fragment() {
     }
 
     private fun displayResults(plateResult: PlateResult) {
-        val dialog = AlertDialog.Builder(this.context)
-        dialog
-            .setTitle("Plates To Use")
-            .setMessage(plateResult.toString())
-         dialog.show()
+        plateResult.plates.forEach {
+            val plateDisplay = it.count.toString() + " " + it.weight + " plates"
+            val tvPlateDisplay = TextView(this.context)
+            tvPlateDisplay.text = plateDisplay
+            TextViewCompat.setTextAppearance(tvPlateDisplay, R.style.TextAppearance_MaterialComponents_Headline5)
+            ll_plate_display.addView(tvPlateDisplay)
+        }
     }
 
     private fun getBarWeight(): Float {

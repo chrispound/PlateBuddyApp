@@ -21,7 +21,7 @@ class PlateCalculatorViewModel : ViewModel() {
 
     fun calculatePlateResult(barWeight: Float, weightToLift: Float): PlateResult {
         val plates = ArrayList<Plate>()
-        val plateWeights = arrayOf(45f, 35f, 25f, 10f, 5f, 2.5f)
+        val plateWeights = arrayOf(45f, 25f, 10f, 5f, 2.5f)
         var weightToLiftCurrent = (weightToLift - barWeight) / 2
         for(plateWeight in plateWeights) {
             val result = buildPlate(weightToLiftCurrent, plateWeight)

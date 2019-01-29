@@ -20,7 +20,7 @@ class PlateManagementFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.plate_management_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_plate_management, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

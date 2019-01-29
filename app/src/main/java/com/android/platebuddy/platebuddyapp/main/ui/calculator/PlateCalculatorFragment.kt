@@ -9,17 +9,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.android.platebuddy.platebuddyapp.R
-import com.android.platebuddy.platebuddyapp.main.MainPresenter
-import com.android.platebuddy.platebuddyapp.main.ui.platemanagement.PlateManagementViewModel
-import com.android.platebuddy.platebuddyapp.models.Plate
 import com.android.platebuddy.platebuddyapp.models.PlateResult
 import kotlinx.android.synthetic.main.fragment_main.*
-import kotlinx.android.synthetic.main.plate_management_fragment.*
 
 
 class PlateCalculatorFragment: Fragment() {
 
-    private val presenter = MainPresenter()
     private lateinit var viewModel: PlateCalculatorViewModel
 
 
@@ -45,7 +40,7 @@ class PlateCalculatorFragment: Fragment() {
         btnCalculate.setOnClickListener {
             val weightToLift = weightToLiftEditTxt.text.toString().toFloat()
             val barWeight = getBarWeight()
-            val plateResult = presenter.calculatePlateResult(barWeight, weightToLift)
+            val plateResult = viewModel.calculatePlateResult(barWeight, weightToLift)
             viewModel.setPlateResult(plateResult)
         }
     }

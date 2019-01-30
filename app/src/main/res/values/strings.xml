@@ -13,4 +13,5 @@
     <string name="has_2_5_weights">Has 2.5 Weights</string>
     <string name="weight_to_lift_hint">Weight To Lift</string>
     <string name="btn_calculate">Calculate</string>
+    <string name="plate_display">%d %s plates</string>
 </resources>

@@ -1,9 +1,9 @@
 package com.android.platebuddy.platebuddyapp.main
 
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
 import com.android.platebuddy.platebuddyapp.R
 import com.android.platebuddy.platebuddyapp.main.ui.calculator.PlateCalculatorFragment
 import com.android.platebuddy.platebuddyapp.main.ui.platemanagement.PlateManagementFragment

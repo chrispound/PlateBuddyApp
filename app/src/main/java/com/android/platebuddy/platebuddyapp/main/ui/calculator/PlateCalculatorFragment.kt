@@ -1,16 +1,16 @@
 package com.android.platebuddy.platebuddyapp.main.ui.calculator
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.android.platebuddy.platebuddyapp.R
-import com.android.platebuddy.platebuddyapp.main.ui.platemanagement.PlateManagementFragment
+import com.android.platebuddy.platebuddyapp.main.hideKeyboard
 import com.android.platebuddy.platebuddyapp.models.PlateResult
 import kotlinx.android.synthetic.main.fragment_plate_calculator.*
 
@@ -33,6 +33,7 @@ class PlateCalculatorFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(PlateCalculatorViewModel::class.java)
         viewModel.getPlateResult().observe(this, Observer<PlateResult> { plateResult ->
             viewAdapter.plates = plateResult?.plates ?: emptyList()
+            view?.hideKeyboard()
         })
     }
 

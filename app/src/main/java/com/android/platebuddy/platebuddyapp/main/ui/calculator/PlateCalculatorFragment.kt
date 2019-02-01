@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.android.platebuddy.platebuddyapp.R
+import com.android.platebuddy.platebuddyapp.main.ui.platemanagement.PlateManagementFragment
 import com.android.platebuddy.platebuddyapp.models.PlateResult
 import kotlinx.android.synthetic.main.fragment_plate_calculator.*
 
@@ -20,6 +21,9 @@ class PlateCalculatorFragment : Fragment() {
     private val viewAdapter = PlateWeightsAdapter()
     private lateinit var viewManager: RecyclerView.LayoutManager;
 
+    companion object {
+        fun newInstance() = PlateCalculatorFragment()
+    }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_plate_calculator, container, false)
     }

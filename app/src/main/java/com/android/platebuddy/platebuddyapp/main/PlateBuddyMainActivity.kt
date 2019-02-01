@@ -15,11 +15,11 @@ class PlateBuddyMainActivity : AppCompatActivity() {
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_calculator -> {
-                updateFragment(PlateCalculatorFragment())
+                updateFragment(PlateCalculatorFragment.newInstance())
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_plate_manage -> {
-                updateFragment(PlateManagementFragment())
+                updateFragment(PlateManagementFragment.newInstance())
                 return@OnNavigationItemSelectedListener true
             }
         }

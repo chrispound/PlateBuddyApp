@@ -36,6 +36,7 @@ class PlateCalculatorFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(PlateCalculatorViewModel::class.java)
         viewModel.getPlateResult().observe(this, Observer<PlateResult> { plateResult ->
             viewAdapter.plates = plateResult?.plates ?: emptyList()
+            weightToLiftEditTxt.text.clear()
             view?.hideKeyboard()
         })
     }

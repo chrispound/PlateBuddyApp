@@ -3,9 +3,11 @@ package com.android.platebuddy.platebuddyapp.main.ui.calculator
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.text.method.KeyListener
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -27,6 +29,7 @@ class PlateCalculatorFragment : Fragment() {
     companion object {
         fun newInstance() = PlateCalculatorFragment()
     }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_plate_calculator, container, false)
     }
@@ -64,11 +67,17 @@ class PlateCalculatorFragment : Fragment() {
 
     private fun setupBtnCalculate() {
         btnCalculate.setOnClickListener {
-            val weightToLift = weightToLiftEditTxt.text.toString().toFloat()
-            val barWeight = getBarWeight()
-            val plateResult = viewModel.calculatePlateResult(barWeight, weightToLift)
-            viewModel.setPlateResult(plateResult)
+            sendCalculateEvent()
         }
+    }
+
+    private fun sendCalculateEvent() {
+        val weightToLiftData = weightToLiftEditTxt.text.toString()
+        if(weightToLiftData.isEmpty()) return
+        val weightToLift = weightToLiftData.toFloat()
+        val barWeight = getBarWeight()
+        val plateResult = viewModel.calculatePlateResult(barWeight, weightToLift)
+        viewModel.setPlateResult(plateResult)
     }
 
     private fun setupWeightToLiftEditText() {
@@ -84,7 +93,18 @@ class PlateCalculatorFragment : Fragment() {
             }
 
         })
+
+        weightToLiftEditTxt.setOnEditorActionListener { _, actionId, _ ->
+            when (actionId) {
+                EditorInfo.IME_ACTION_DONE -> {
+                    sendCalculateEvent()
+                    true
+                }
+                else -> false
+            }
+        }
     }
+
 
     private fun updateCalculateButtonEnabled() {
         val txt = weightToLiftEditTxt.weightToLiftEditTxt.text

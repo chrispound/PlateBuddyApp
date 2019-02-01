@@ -1,6 +1,8 @@
 package com.android.platebuddy.platebuddyapp.main.ui.calculator
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +15,7 @@ import com.android.platebuddy.platebuddyapp.R
 import com.android.platebuddy.platebuddyapp.main.hideKeyboard
 import com.android.platebuddy.platebuddyapp.models.PlateResult
 import kotlinx.android.synthetic.main.fragment_plate_calculator.*
+import kotlinx.android.synthetic.main.fragment_plate_calculator.view.*
 
 
 class PlateCalculatorFragment : Fragment() {
@@ -44,18 +47,47 @@ class PlateCalculatorFragment : Fragment() {
 
     private fun setupView() {
         viewManager = LinearLayoutManager(context)
+        setupWeightToLiftEditText()
+        setupBtnCalculate()
+        setupPlateResultRelativeaLayout()
+        updateCalculateButtonEnabled()
+    }
+
+    private fun setupPlateResultRelativeaLayout() {
+        relativeLayoutPlates.apply {
+            setHasFixedSize(true)
+            layoutManager = viewManager
+            adapter = viewAdapter
+        }
+    }
+
+    private fun setupBtnCalculate() {
         btnCalculate.setOnClickListener {
             val weightToLift = weightToLiftEditTxt.text.toString().toFloat()
             val barWeight = getBarWeight()
             val plateResult = viewModel.calculatePlateResult(barWeight, weightToLift)
             viewModel.setPlateResult(plateResult)
         }
+    }
 
-        relativeLayoutPlates.apply {
-            setHasFixedSize(true)
-            layoutManager = viewManager
-            adapter = viewAdapter
-        }
+    private fun setupWeightToLiftEditText() {
+        weightToLiftEditTxt.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+                updateCalculateButtonEnabled()
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+        })
+    }
+
+    private fun updateCalculateButtonEnabled() {
+        val txt = weightToLiftEditTxt.weightToLiftEditTxt.text
+        btnCalculate.isEnabled = txt != null && !txt.toString().isEmpty()
     }
 
     private fun getBarWeight(): Float {

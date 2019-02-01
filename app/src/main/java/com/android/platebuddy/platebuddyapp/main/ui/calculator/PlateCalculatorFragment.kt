@@ -72,9 +72,7 @@ class PlateCalculatorFragment : Fragment() {
     }
 
     private fun sendCalculateEvent() {
-        val weightToLiftData = weightToLiftEditTxt.text.toString()
-        if(weightToLiftData.isEmpty()) return
-        val weightToLift = weightToLiftData.toFloat()
+        val weightToLift = weightToLiftEditTxt.text.toString().toFloatOrNull() ?: return
         val barWeight = getBarWeight()
         val plateResult = viewModel.calculatePlateResult(barWeight, weightToLift)
         viewModel.setPlateResult(plateResult)

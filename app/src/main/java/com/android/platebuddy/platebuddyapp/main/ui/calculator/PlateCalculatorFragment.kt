@@ -3,7 +3,6 @@ package com.android.platebuddy.platebuddyapp.main.ui.calculator
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.text.method.KeyListener
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,29 +23,36 @@ class PlateCalculatorFragment : Fragment() {
 
     private lateinit var viewModel: PlateCalculatorViewModel
     private val viewAdapter = PlateWeightsAdapter()
-    private lateinit var viewManager: RecyclerView.LayoutManager;
+    private lateinit var viewManager: RecyclerView.LayoutManager
 
     companion object {
+        const val PLATES_STATE_KEY = "plates"
         fun newInstance() = PlateCalculatorFragment()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_plate_calculator, container, false)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(PlateCalculatorViewModel::class.java)
         viewModel.getPlateResult().observe(this, Observer<PlateResult> { plateResult ->
             viewAdapter.plates = plateResult?.plates ?: emptyList()
             weightToLiftEditTxt.text.clear()
             view?.hideKeyboard()
         })
+        viewAdapter.plates = savedInstanceState?.getParcelable<PlateResult>(PLATES_STATE_KEY)?.plates ?: emptyList()
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_plate_calculator, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupView()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putParcelable(PLATES_STATE_KEY, viewModel.getPlateResult().value)
+        super.onSaveInstanceState(outState)
     }
 
     private fun setupView() {

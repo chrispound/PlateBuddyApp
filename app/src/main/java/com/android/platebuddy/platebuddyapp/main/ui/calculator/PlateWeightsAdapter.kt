@@ -10,7 +10,7 @@ import java.text.DecimalFormat
 
 class PlateWeightsAdapter: RecyclerView.Adapter<PlateWeightsViewHolder>(){
 
-    val weightFormat = DecimalFormat("##.#")
+    private val weightFormat = DecimalFormat("##.#")
     var plates: List<Plate> = emptyList()
         set(value) {
             this.notifyDataSetChanged()
@@ -28,8 +28,8 @@ class PlateWeightsAdapter: RecyclerView.Adapter<PlateWeightsViewHolder>(){
 
     override fun onBindViewHolder(vh: PlateWeightsViewHolder, position: Int) {
         val plate = plates[position]
-        val weightDispaly = weightFormat.format(plate.weight)
-        vh.textView.text = vh.itemView.context.getString(R.string.plate_display, plate.count, weightDispaly)
+        val weightDisplay = weightFormat.format(plate.weight)
+        vh.textView.text = vh.itemView.context.getString(R.string.plate_display, plate.count, weightDisplay)
     }
 
 }

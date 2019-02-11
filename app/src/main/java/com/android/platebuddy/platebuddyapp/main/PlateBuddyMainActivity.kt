@@ -30,7 +30,9 @@ class PlateBuddyMainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-        updateFragment(PlateCalculatorFragment())
+        if(supportFragmentManager.backStackEntryCount == 0) {
+            updateFragment(PlateCalculatorFragment.newInstance())
+        }
     }
 
     private fun updateFragment(fragment: Fragment) {
